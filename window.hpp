@@ -17,6 +17,10 @@ namespace engine{
         Window(int w, int h, const char* name);
         ~Window();
 
+        // Eviter les doublons
+        Window(const Window &) = delete;
+        Window &operator=(const Window &) = delete;
+
         void initWindow(int width, int height, const char* name);
         bool shouldClose();
     };
