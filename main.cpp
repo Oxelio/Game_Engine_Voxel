@@ -1,36 +1,38 @@
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
+/*
+        Game Engine en Voxel
 
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+        Nom : Owedia
+        Auteur : Wiplier Stephen
 
-#include <glm/vec4.hpp>
-#include <glm/mat4x4.hpp>
+        Bonne pratiques :
+        class : Class
+        fonction : fonctionFonction
+        variable : variable_variable
 
-#include <iostream>
+*/
+
+// Libraries
+
+# include <vulkan/vulkan.h>
+# include <iostream>
+# include <stdexcept>
+
+# include "application.hpp"
+
+// Fonction principale
 
 int main() {
-    glfwInit();
 
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Vulkan window", nullptr, nullptr);
+    engine::Application owedia_appli;
 
-    uint32_t extensionCount = 0;
-    vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
-
-    std::cout << extensionCount << " extensions supported\n";
-
-    glm::mat4 matrix;
-    glm::vec4 vec;
-    auto test = matrix * vec;
-
-    while(!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
+    try {
+        owedia_appli.run(); // On test si l'appli se lance
+    } 
+    catch (const std::exception& error) 
+    {
+        std::cerr << error.what() << '\n';
+        return EXIT_FAILURE;
     }
 
-    glfwDestroyWindow(window);
-
-    glfwTerminate();
-
-    return 0;
+    return EXIT_SUCCESS;
 }
