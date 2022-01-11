@@ -7,16 +7,17 @@ namespace engine{
     class Window
     {
     private:
-        const int WIDTH = 800;
-        const int HEIGHT = 600;
+        const int width;
+        const int height;
+        const char* window_name;
 
         GLFWwindow* window;
 
     public:
-        Window();
+        Window(int w, int h, const char* name);
         ~Window();
 
-        void initWindow();
+        void initWindow(int width, int height, const char* name);
         bool shouldClose();
     };
 }

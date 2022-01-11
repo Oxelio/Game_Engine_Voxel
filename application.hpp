@@ -6,7 +6,7 @@ namespace engine{
     class Application
     {
     private:
-        Window owedia_window;
+        Window owedia_window{800,600,"Owedia engine"};
     
     public:
         // Constructeur et destructeur
